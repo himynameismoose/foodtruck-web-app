@@ -1,4 +1,5 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
+import FoodTruckService from '../services/FoodTruckService'
 
 // Arrow function for the FoodTruck Component
 const ListFoodTruckComponent =  () => {
@@ -6,6 +7,16 @@ const ListFoodTruckComponent =  () => {
     // State Hook
     // Declare a new state variable called foodtrucks
     const [foodtrucks, setFoodTrucks] = useState([]); // Array of food trucks
+
+    // Effect Hook
+    useEffect(() => {
+        FoodTruckService.getAllFoodTrucks().then((response) => {
+            setFoodTrucks(response.data);
+            console.log(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
+    }, [])
 
     return (
         // Use .jsx code to design
