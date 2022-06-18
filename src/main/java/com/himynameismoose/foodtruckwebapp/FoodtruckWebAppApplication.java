@@ -19,16 +19,16 @@ public class FoodtruckWebAppApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
-		FoodTruck foodtruck = new FoodTruck();
-		foodtruck.setName("El Maestro del Taco");
-		foodtruck.setAddress("1836 156th Ave NE, Bellevue, WA 98007");
-		foodtruck.setFoodType("Mexican");
-		foodTruckRepository.save(foodtruck);
-
-		FoodTruck foodtruck1 = new FoodTruck();
-		foodtruck1.setName("Taqueria La Estrella");
-		foodtruck1.setAddress("20435 84th Ave S, Kent, WA 98032");
-		foodtruck1.setFoodType("Mexican");
-		foodTruckRepository.save(foodtruck1);
+//		FoodTruck foodtruck = new FoodTruck();
+//		foodtruck.setName("El Maestro del Taco");
+//		foodtruck.setAddress("1836 156th Ave NE, Bellevue, WA 98007");
+//		foodtruck.setFoodType("Mexican");
+//		foodTruckRepository.save(foodtruck);
+//
+//		FoodTruck foodtruck1 = new FoodTruck();
+//		foodtruck1.setName("Taqueria La Estrella");
+//		foodtruck1.setAddress("20435 84th Ave S, Kent, WA 98032");
+//		foodtruck1.setFoodType("Mexican");
+//		foodTruckRepository.save(foodtruck1);
 	}
 }
