@@ -1,10 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react';
+import FoodTruckService from '../services/FoodTruckService';
 
 const ListFoodTruckComponent = () => {
 
     // Use State hook
-    const [foodtrucks, setFoodTrucks] = useState([])
+    const [foodtrucks, setFoodTrucks] = useState([]);
 
+    // Use Effect hook
+    useEffect(() => {
+      
+        FoodTruckService.getAllFoodTrucks().then((response) => {
+            setFoodTrucks(response.data);
+            console.log(response.data);
+        }).catch(error => {
+            console.log(error);
+        })
+
+    }, [])
+    
   return (
     // use jsx code
     <div className="container">
