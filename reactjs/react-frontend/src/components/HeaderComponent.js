@@ -4,7 +4,7 @@ const HeaderComponent = () => {
   return (
     <div>
         <header>
-            <nav className="navbar navbar-expand-md navbar-dark bg-dark">
+            <nav className="navbar navbar-expand-md navbar-dark bg-light">
                 <div>
                     Food Trucks!
                 </div>
