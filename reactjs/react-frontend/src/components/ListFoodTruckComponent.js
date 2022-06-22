@@ -22,7 +22,7 @@ const ListFoodTruckComponent = () => {
     // use jsx code
     <div className="container">
         <h2 className="text-center"> List Food Trucks </h2>
-        <Link to="/add-food-truck" className="btn btn-primary mb-2"> Add Food Truck </Link>
+        <Link to="/add-foodtruck" className="btn btn-primary mb-2"> Add Food Truck </Link>
         <table className="table table-bordered table-striped">
             <thead>
                 <th> Food Truck ID </th>
