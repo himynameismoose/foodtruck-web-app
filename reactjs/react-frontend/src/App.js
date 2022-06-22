@@ -14,7 +14,7 @@ function App() {
           <Routes>
             <Route exact path="/" element={<ListFoodTruckComponent/>}></Route>
             <Route path="/foodtrucks" element={<ListFoodTruckComponent/>}></Route>
-            <Route path="/add-employee" element={<AddFoodTruckComponent/>}></Route>
+            <Route path="/add-foodtruck" element={<AddFoodTruckComponent/>}></Route>
           </Routes>
         </div>
         <FooterComponent/>
