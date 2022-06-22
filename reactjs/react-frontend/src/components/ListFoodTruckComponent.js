@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import FoodTruckService from '../services/FoodTruckService';
+import { Link } from 'react-router-dom';
 
 const ListFoodTruckComponent = () => {
 
