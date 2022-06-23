@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import FoodTruckService from '../services/FoodTruckService';
 
 const AddFoodTruckComponent = () => {
@@ -73,6 +73,7 @@ const AddFoodTruckComponent = () => {
                   />
                 </div>
                 <button className="btn btn-success" onClick={(e) => saveFoodTruck(e)}> Submit </button>
+                <Link to="/foodtrucks" className="btn btn-danger"> Cancel </Link>
               </form>
             </div>
           </div>
