@@ -1,10 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import FoodTruckService from '../services/FoodTruckService';
 
 const AddFoodTruckComponent = () => {
 
   const [name, setName] = useState('')
   const [address, setAddress] = useState('')
   const [foodType, setFoodType] = useState('')
+  const navigate = useNavigate();
 
   // save food truck info
   const saveFoodTruck = (e) => {
@@ -12,8 +15,16 @@ const AddFoodTruckComponent = () => {
 
     const foodtruck = {name, address, foodType}
 
-    console.log(foodtruck);
+    // Data from the form will be sent to the service -> post
+    FoodTruckService.createFoodTruck(foodtruck).then((response) => {
+      console.log(response.data);
+      navigate('/foodtrucks');
+    }).catch(error => {
+      console.log(error);
+    })
   }
+
+  
 
   return (
     <div>
