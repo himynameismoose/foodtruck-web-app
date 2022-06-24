@@ -36,4 +36,22 @@ public class FoodTruckController {
 
         return ResponseEntity.ok(foodtruck);
     }
+
+    // Build Update Food Truck REST API
+    @PutMapping("{id}")
+    public ResponseEntity<FoodTruck> updateFoodTruck(@PathVariable int id, @RequestBody FoodTruck foodtruckDetails) {
+        // Find the food truck by id
+        FoodTruck updateFoodTruck = foodTruckRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Food Truck not found with ID: " + id));
+
+        // update the foodtruck by setting details
+        updateFoodTruck.setName(foodtruckDetails.getName());
+        updateFoodTruck.setAddress(foodtruckDetails.getAddress());
+        updateFoodTruck.setFoodType(foodtruckDetails.getFoodType());
+
+        // save the updated truck
+        foodTruckRepository.save(updateFoodTruck);
+
+        return ResponseEntity.ok(updateFoodTruck);
+    }
 }
