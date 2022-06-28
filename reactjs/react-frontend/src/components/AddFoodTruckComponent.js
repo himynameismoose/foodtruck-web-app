@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, Link, useParams } from 'react-router-dom';
 import FoodTruckService from '../services/FoodTruckService';
 
 const AddFoodTruckComponent = () => {
 
-  const [name, setName] = useState('')
-  const [address, setAddress] = useState('')
-  const [foodType, setFoodType] = useState('')
+  const [name, setName] = useState('');
+  const [address, setAddress] = useState('');
+  const [foodType, setFoodType] = useState('');
   const navigate = useNavigate();
+  const {id} = useParams();
 
   // save food truck info
   const saveFoodTruck = (e) => {
@@ -24,6 +25,15 @@ const AddFoodTruckComponent = () => {
     })
   }
 
+  useEffect(() => {
+    FoodTruckService.getFoodTruckById(id).then((response) => {
+      setName(response.data.name);
+      setAddress(response.data.address);
+      setFoodType(response.data.foodType);
+    }).catch(error => {
+      console.log(error);
+    })
+  }, [])
   
 
   return (
