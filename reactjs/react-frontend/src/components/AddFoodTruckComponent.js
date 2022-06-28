@@ -35,6 +35,14 @@ const AddFoodTruckComponent = () => {
     })
   }, [])
   
+  // Use the same form to add/update
+  const title = () => {
+    if(id) {
+      return <h2 className="text-center"> Update Food Truck </h2>
+    } else {
+      return <h2 className="text-center"> Add Food Truck </h2>
+    }
+  }
 
   return (
     <div>
@@ -43,7 +51,9 @@ const AddFoodTruckComponent = () => {
         <div className="row">
           <div className="card col-md-6 offset-md-3 offset-md-3">
             <br/>
-            <h2 className="text-center"> Add Food Truck </h2>
+            {
+              title()
+            }
             <div className="card-body">
               <form>
                 <div className="form-group mb-2">
