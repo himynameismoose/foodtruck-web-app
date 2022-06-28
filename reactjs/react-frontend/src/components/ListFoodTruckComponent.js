@@ -30,6 +30,7 @@ const ListFoodTruckComponent = () => {
                 <th> Food Truck Name </th>
                 <th> Food Truck Address </th>
                 <th> Food Truck Food Type </th>
+                <th> Actions </th>
             </thead>
             <tbody>
                 {
@@ -40,6 +41,10 @@ const ListFoodTruckComponent = () => {
                             <td> {foodtruck.name} </td>
                             <td> {foodtruck.address} </td>
                             <td> {foodtruck.foodType} </td>
+                            {/* Action Buttons */}
+                            <td>
+                                <Link className="btn btn-info" to={`/edit-foodtruck/${foodtruck.id}`}> Update </Link>
+                            </td>
                         </tr>
                     )
                 }
