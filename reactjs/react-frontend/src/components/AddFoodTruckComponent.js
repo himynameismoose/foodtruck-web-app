@@ -11,18 +11,28 @@ const AddFoodTruckComponent = () => {
   const {id} = useParams();
 
   // save food truck info
-  const saveFoodTruck = (e) => {
+  const saveOrUpdateFoodTruck = (e) => {
     e.preventDefault();
 
     const foodtruck = {name, address, foodType}
 
-    // Data from the form will be sent to the service -> post
-    FoodTruckService.createFoodTruck(foodtruck).then((response) => {
-      console.log(response.data);
-      navigate('/foodtrucks');
-    }).catch(error => {
-      console.log(error);
-    })
+    if (id) {
+      FoodTruckService.updateFoodTruck(id, foodtruck).then((response) => {
+        // Once food truck is updated (details saved to database)
+        // navigate back to list
+        navigate('/foodtrucks');
+      }).catch(error => {
+        console.log(error);
+      });
+    } else {
+      // Data from the form will be sent to the service -> post
+      FoodTruckService.createFoodTruck(foodtruck).then((response) => {
+        console.log(response.data);
+        navigate('/foodtrucks');
+      }).catch(error => {
+        console.log(error);
+      });
+    }
   }
 
   useEffect(() => {
@@ -92,7 +102,7 @@ const AddFoodTruckComponent = () => {
                     onChange={(e) => setFoodType(e.target.value)}
                   />
                 </div>
-                <button className="btn btn-success" onClick={(e) => saveFoodTruck(e)}> Submit </button>
+                <button className="btn btn-success" onClick={(e) => saveOrUpdateFoodTruck(e)}> Submit </button>
                 <Link to="/foodtrucks" className="btn btn-danger"> Cancel </Link>
               </form>
             </div>
