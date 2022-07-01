@@ -4,6 +4,7 @@ import com.himynameismoose.foodtruckwebapp.exception.ResourceNotFoundException;
 import com.himynameismoose.foodtruckwebapp.model.FoodTruck;
 import com.himynameismoose.foodtruckwebapp.repository.FoodTruckRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -53,5 +54,16 @@ public class FoodTruckController {
         foodTruckRepository.save(updateFoodTruck);
 
         return ResponseEntity.ok(updateFoodTruck);
+    }
+
+    // Build Detele Food Truck REST API
+    @DeleteMapping("{id}")
+    public ResponseEntity<HttpStatus> deleteFoodTruck(@PathVariable int id) {
+        FoodTruck foodtruck = foodTruckRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Food Truck not found with ID: " + id));
+
+        foodTruckRepository.delete(foodtruck);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
